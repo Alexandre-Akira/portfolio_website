@@ -13,7 +13,7 @@
           src="../assets/images/homepage/mobile/image-homepage-profile.jpg"
           alt=""
         />
-        <hr />
+        <div class="divider"></div>
         <h2 class="card__title">About Me</h2>
       </header>
       <main class="card__main">
@@ -34,10 +34,10 @@
           <rounter-link to="/">GO TO PORTFOLIO</rounter-link>
         </div>
       </footer>
-      <hr />
+      <div class="divider"></div>
 
       <div class="home__footer">
-        <h2>Interested in doing a project together?</h2>
+        <h2 class="footer__title">Interested in doing a project together?</h2>
 
         <div class="card__link card__link--center">
           <rounter-link to="/">CONTACT ME</rounter-link>
@@ -62,6 +62,13 @@
     padding-bottom: 32px;
     color: var(--grayishDarkBlue);
   }
+  .card__image {
+    margin-bottom: 40px;
+  }
+
+  .card__title {
+    margin-top: 40px;
+  }
 
   .card__description {
     color: var(--grayishDarkBlue);
@@ -69,6 +76,7 @@
   }
 
   .card__footer {
+    margin-bottom: 51px;
   }
 
   .card__link {
@@ -88,6 +96,18 @@
   }
 
   .home__footer {
+    margin-top: 115px;
     text-align: center;
+  }
+
+  .footer__title {
+    margin-bottom: 40px;
+  }
+
+  .divider {
+    height: 1px;
+    background-color: var(--grayishDarkBlue);
+    mix-blend-mode: normal;
+    opacity: 0.15;
   }
 </style>
