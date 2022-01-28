@@ -3,21 +3,25 @@
     <rounter-link to="/" class="navigation__logo"
       ><img src="./assets/images/logo.svg" />
     </rounter-link>
-    <a><img src="./assets/images/icons/hamburger.svg" /></a>
-    <!-- <router-link v-if="teste" to="/">HOME</router-link>
-    <router-link v-if="teste" to="/about">PORTFOLIO</router-link>
-    <router-link v-if="teste" to="/about">CONTACT ME</router-link> -->
+    <a class="navigation__hamburguer" v-if="!teste"
+      ><img src="./assets/images/icons/hamburger.svg"
+    /></a>
+    <div class="navigation__links body1" v-if="teste">
+      <router-link to="/">HOME</router-link>
+      <router-link to="/about">PORTFOLIO</router-link>
+      <router-link to="/about">CONTACT ME</router-link>
+    </div>
   </nav>
   <router-view class="main" />
   <footer class="contact">
-    <router-link class="contact__logo" to="/"></router-link>
     <div class="contact__navLinks">
+      <router-link class="contact__logo" to="/"></router-link>
       <router-link class="contact__navLink" to="/">HOME</router-link>
       <router-link class="contact__navLink" to="/about">PORTFOLIO</router-link>
       <router-link class="contact__navLink" to="/about">CONTACT ME</router-link>
     </div>
 
-    <div class="contact__socialMedias">
+    <div class="contact__socialMedias body1">
       <rounter-link to="/" class="contact__mediaLink"
         ><img src="./assets/images/icons/github.svg" />
       </rounter-link>
@@ -31,6 +35,20 @@
   </footer>
 </template>
 
+<script>
+  export default {
+    name: "App",
+    computed: {
+      teste() {
+        if (screen.width <= 375) {
+          return false;
+        } else {
+          return true;
+        }
+      },
+    },
+  };
+</script>
 <style>
   /* FONTS IMPORT */
   @import url("https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -126,6 +144,10 @@
     box-sizing: border-box;
   }
 
+  a:visited {
+    color: none;
+  }
+
   :root {
     /* PRIMARY COLORS */
     --slightlyDesaturatedCyan: #5fb4a2;
@@ -186,11 +208,23 @@
     padding: 32px 32px 40px;
   }
 
-  .navigation a {
+  .navigation__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 309px;
+    letter-spacing: 2px;
   }
 
+  .navigation a {
+    text-decoration: none;
+  }
+
+  .navigation a:visited {
+    color: var(--darkBlue);
+  }
   .navigation a.router-link-exact-active {
-    color: #42b983;
+    color: var(--slightlyDesaturatedCyan);
   }
 
   .main {
@@ -230,5 +264,64 @@
 
   .contact__mediaLink:not(:last-child) {
     padding-right: 15px;
+  }
+
+  /* TABLET SETTINGS */
+
+  @media (min-width: 768px) {
+    .navigation {
+      padding-top: 64px;
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+
+    .main {
+      padding-right: 40px;
+      padding-left: 40px;
+    }
+
+    .contact {
+      margin-top: 120px;
+      display: flex;
+      padding: 0 39px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact__logo {
+      margin-right: 40px;
+    }
+
+    .contact__navLinks {
+      display: flex;
+      align-items: center;
+      padding: 0;
+    }
+
+    .contact__navLink:not(:last-child) {
+      padding: 0 33px 0 0;
+    }
+
+    .contact__navLink {
+      padding: 33px 0px;
+      letter-spacing: 2px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .navigation {
+      padding-right: 165px;
+      padding-left: 165px;
+      padding-bottom: 54px;
+    }
+
+    .main {
+      padding-right: 165px;
+      padding-left: 165px;
+    }
+
+    .contact {
+      padding: 0 165px;
+    }
   }
 </style>
