@@ -5,7 +5,7 @@
         <source
           media="(min-width: 1440px)"
           srcset="
-            ../assets/images/homepage/desktop/image-homepage-hero.jpg 1340w
+            ../assets/images/homepage/desktop/image-homepage-hero.jpg 1440w
           "
         />
         <source

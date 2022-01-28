@@ -6,7 +6,7 @@
     <a class="navigation__hamburguer" v-if="!teste"
       ><img src="./assets/images/icons/hamburger.svg"
     /></a>
-    <div class="navigation__links body1" v-if="teste">
+    <div class="navigation__links body2" v-if="teste">
       <router-link to="/">HOME</router-link>
       <router-link to="/about">PORTFOLIO</router-link>
       <router-link to="/about">CONTACT ME</router-link>
@@ -14,21 +14,21 @@
   </nav>
   <router-view class="main" />
   <footer class="contact">
-    <div class="contact__navLinks">
+    <div class="contact__navLinks body2">
       <router-link class="contact__logo" to="/"></router-link>
       <router-link class="contact__navLink" to="/">HOME</router-link>
       <router-link class="contact__navLink" to="/about">PORTFOLIO</router-link>
       <router-link class="contact__navLink" to="/about">CONTACT ME</router-link>
     </div>
 
-    <div class="contact__socialMedias body1">
-      <rounter-link to="/" class="contact__mediaLink"
+    <div class="contact__socialMedias">
+      <rounter-link to="" class="contact__mediaLink"
         ><img src="./assets/images/icons/github.svg" />
       </rounter-link>
-      <rounter-link to="/" class="contact__mediaLink"
+      <rounter-link to="" class="contact__mediaLink"
         ><img src="./assets/images/icons/linkedin.svg" />
       </rounter-link>
-      <rounter-link to="/" class="contact__mediaLink"
+      <rounter-link to="" class="contact__mediaLink"
         ><img src="./assets/images/icons/twitter.svg" />
       </rounter-link>
     </div>
@@ -195,7 +195,7 @@
   .body2 {
     font-family: "Public Sans", sans-serif;
     font-weight: regular;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 30px;
   }
   #app {
@@ -216,14 +216,17 @@
     letter-spacing: 2px;
   }
 
-  .navigation a {
+  a {
     text-decoration: none;
+    color: inherit;
   }
 
   .navigation a:visited {
     color: var(--darkBlue);
   }
-  .navigation a.router-link-exact-active {
+
+  .navigation a.router-link-exact-active,
+  a.router-link-exact-active {
     color: var(--slightlyDesaturatedCyan);
   }
 
@@ -253,12 +256,13 @@
   }
 
   .contact__navLink {
+    letter-spacing: 2px;
     display: block;
     text-decoration: none;
     color: white;
   }
 
-  .contact__navLink:not(:last-child) {
+  .contact__navLink .contact__navLink:not(:last-child) {
     padding-bottom: 32px;
   }
 
@@ -304,7 +308,6 @@
 
     .contact__navLink {
       padding: 33px 0px;
-      letter-spacing: 2px;
     }
   }
 
