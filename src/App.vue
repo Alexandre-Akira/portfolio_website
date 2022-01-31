@@ -318,7 +318,6 @@
     .footerApp__navLinks {
       display: flex;
       align-items: center;
-      padding: 0;
     }
     .footerApp__navLink {
       padding: unset;
@@ -346,7 +345,7 @@
     }
 
     .footerApp {
-      padding: 0 165px;
+      padding: 33px 165px;
     }
   }
 </style>
