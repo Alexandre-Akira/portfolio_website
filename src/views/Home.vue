@@ -31,28 +31,24 @@
       </div>
     </section>
     <article class="aboutMe">
-      <header class="aboutMe__header">
-        <picture>
-          <source
-            media="(min-width: 1440px)"
-            srcset="
-              ../assets/images/homepage/desktop/image-homepage-profile.jpg
-            "
-          />
-          <source
-            media="(min-width: 768px)"
-            srcset="../assets/images/homepage/tablet/image-homepage-profile.jpg"
-          />
-          <source
-            media="(min-width: 375px)"
-            srcset="../assets/images/homepage/mobile/image-homepage-profile.jpg"
-          />
-          <img
-            src="../assets/images/homepage/desktop/image-homepage-profile.jpg"
-            alt="Uma foto do desenvolvedor Alexandre Akira Enjiu"
-          />
-        </picture>
-      </header>
+      <picture class="aboutMe__image">
+        <source
+          media="(min-width: 1440px)"
+          srcset="../assets/images/homepage/desktop/image-homepage-profile.jpg"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="../assets/images/homepage/tablet/image-homepage-profile.jpg"
+        />
+        <source
+          media="(min-width: 375px)"
+          srcset="../assets/images/homepage/mobile/image-homepage-profile.jpg"
+        />
+        <img
+          src="../assets/images/homepage/desktop/image-homepage-profile.jpg"
+          alt="Uma foto do desenvolvedor Alexandre Akira Enjiu"
+        />
+      </picture>
 
       <div class="aboutMe__content">
         <div class="divider"></div>
@@ -107,13 +103,11 @@
     font-size: 40px;
     line-height: 42px;
     letter-spacing: -0.36px;
+    padding: 24px 0 32px 0;
   }
 
   .aboutMe {
-    margin-top: 86px;
-  }
-  .aboutMe__image {
-    margin-bottom: 40px;
+    margin-top: 96px;
   }
 
   .aboutMe__title {
@@ -122,6 +116,7 @@
     font-size: 40px;
     line-height: 42px;
     letter-spacing: -0.36px;
+    padding: 32px 0 28px 0;
   }
 
   .aboutMe__description {
@@ -137,6 +132,9 @@
     margin-bottom: 51px;
   }
 
+  .aboutMe__image img {
+    margin-bottom: 32px;
+  }
   .contactMe__button--center {
     margin-right: auto;
     margin-left: auto;
@@ -189,7 +187,11 @@
 
     .aboutMe {
       display: grid;
-      grid-template-columns: 0.5fr 1fr;
+      grid-template-columns: 0.69fr 1fr;
+    }
+
+    .aboutMe__image img {
+      min-height: 600px;
     }
 
     .aboutMe__content {
@@ -217,6 +219,7 @@
       grid-template-columns: 3.5fr 1fr 1fr;
       align-items: center;
       gap: 32px;
+      margin-top: 96px;
     }
 
     .contactMe__title {

@@ -248,7 +248,6 @@
   }
 
   .footerApp__navLinks {
-    padding: 40px 0;
     font-family: "Public Sans", sans-serif;
     font-weight: regular;
     font-size: 12px;
@@ -260,10 +259,11 @@
     display: block;
     text-decoration: none;
     color: white;
+    padding-bottom: 24px;
   }
 
-  .footerApp__navLink .footerApp__navLink:not(:last-child) {
-    padding-bottom: 32px;
+  .footerApp__navLink:nth-child(2) {
+    margin-top: 24px;
   }
 
   .footerApp__image {
@@ -283,6 +283,7 @@
       padding-top: 64px;
       padding-right: 40px;
       padding-left: 40px;
+      padding-bottom: 47px;
     }
 
     .headerApp__hamburguer {
@@ -304,9 +305,10 @@
     .footerApp {
       margin-top: 120px;
       display: flex;
-      padding: 0 39px;
+      padding: 24px 39px;
       justify-content: space-between;
       align-items: center;
+      margin-top: 96px;
     }
 
     .footerApp__logo {
@@ -318,13 +320,16 @@
       align-items: center;
       padding: 0;
     }
+    .footerApp__navLink {
+      padding: unset;
+    }
+
+    .footerApp__navLink:nth-child(2) {
+      margin: unset;
+    }
 
     .footerApp__navLink:not(:last-child) {
       padding: 0 33px 0 0;
-    }
-
-    .footerApp__navLink {
-      padding: 33px 0px;
     }
   }
 
