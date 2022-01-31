@@ -1,35 +1,66 @@
 <template>
-  <nav class="navigation">
-    <rounter-link to="/" class="navigation__logo"
-      ><img src="./assets/images/logo.svg" />
-    </rounter-link>
-    <a class="navigation__hamburguer" v-if="!teste"
-      ><img src="./assets/images/icons/hamburger.svg"
-    /></a>
-    <div class="navigation__links body2" v-if="teste">
-      <router-link to="/">HOME</router-link>
-      <router-link to="/about">PORTFOLIO</router-link>
-      <router-link to="/about">CONTACT ME</router-link>
-    </div>
-  </nav>
-  <router-view class="main" />
-  <footer class="contact">
-    <div class="contact__navLinks body2">
-      <router-link class="contact__logo" to="/"></router-link>
-      <router-link class="contact__navLink" to="/">HOME</router-link>
-      <router-link class="contact__navLink" to="/about">PORTFOLIO</router-link>
-      <router-link class="contact__navLink" to="/about">CONTACT ME</router-link>
-    </div>
+  <header class="headerApp">
+    <nav class="headerApp__navigation">
+      <rounter-link to="/" class="headerApp__logo"
+        ><img src="./assets/images/logo.svg" />
+      </rounter-link>
 
-    <div class="contact__socialMedias">
-      <rounter-link to="" class="contact__mediaLink"
-        ><img src="./assets/images/icons/github.svg" />
+      <a class="headerApp__hamburguer"
+        ><img src="./assets/images/icons/hamburger.svg"
+      /></a>
+
+      <div class="headerApp__navLinks">
+        <router-link
+          class="headerApp__navLink"
+          v-for="(link, index) in links"
+          :key="link + index"
+          :to="link.path"
+          >{{ link.description }}</router-link
+        >
+      </div>
+    </nav>
+  </header>
+
+  <main class="mainApp">
+    <router-view class="mainApp__content" />
+  </main>
+
+  <footer class="footerApp">
+    <nav class="footerApp__navLinks">
+      <router-link class="footerApp__logo" to="/"></router-link>
+
+      <router-link
+        class="footerApp__navLink"
+        v-for="(link, index) in links"
+        :key="link + index"
+        :to="link.path"
+        >{{ link.description }}
+      </router-link>
+    </nav>
+
+    <div class="footerApp__socialMedias">
+      <rounter-link to="" class="footerApp__mediaLink"
+        ><img
+          class="footerApp__image"
+          src="./assets/images/icons/github.svg"
+          alt="Icone do github"
+        />
       </rounter-link>
-      <rounter-link to="" class="contact__mediaLink"
-        ><img src="./assets/images/icons/linkedin.svg" />
+
+      <rounter-link to="" class="footerApp__mediaLink"
+        ><img
+          class="footerApp__image"
+          src="./assets/images/icons/linkedin.svg"
+          alt="Icone do linkedin"
+        />
       </rounter-link>
-      <rounter-link to="" class="contact__mediaLink"
-        ><img src="./assets/images/icons/twitter.svg" />
+
+      <rounter-link to="" class="footerApp__mediaLink"
+        ><img
+          class="footerApp__image"
+          src="./assets/images/icons/twitter.svg"
+          alt="Icone do twitter"
+        />
       </rounter-link>
     </div>
   </footer>
@@ -38,14 +69,15 @@
 <script>
   export default {
     name: "App",
-    computed: {
-      teste() {
-        if (screen.width <= 375) {
-          return false;
-        } else {
-          return true;
-        }
-      },
+
+    data() {
+      return {
+        links: [
+          { path: "/", description: "HOME" },
+          { path: "/portfolio", description: "PORTFOLIO" },
+          { path: "/contact", description: "CONTACT ME" },
+        ],
+      };
     },
   };
 </script>
@@ -144,8 +176,20 @@
     box-sizing: border-box;
   }
 
-  a:visited {
-    color: none;
+  /* LINKS & IMG*/
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a.router-link-exact-active {
+    color: var(--slightlyDesaturatedCyan) !important;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
   }
 
   :root {
@@ -159,88 +203,40 @@
     --brightRedErrors: #f43030;
   }
 
-  /* HEADINGS  */
-
-  h1 {
-    font-family: "Ibarra Real Nova", serif;
-    font-weight: bold;
-    font-size: 50px;
-    line-height: 50px;
-    letter-spacing: -0.45px;
-  }
-
-  h2 {
-    font-family: "Ibarra Real Nova", serif;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 42px;
-    letter-spacing: -0.36px;
-  }
-
-  h3 {
-    font-family: "Ibarra Real Nova", serif;
-    font-weight: regular;
-    font-size: 32px;
-    line-height: 36px;
-    letter-spacing: -0.29px;
-  }
-
-  .body1 {
-    font-family: "Public Sans", sans-serif;
-    font-weight: regular;
-    font-size: 16px;
-    line-height: 30px;
-  }
-
-  .body2 {
-    font-family: "Public Sans", sans-serif;
-    font-weight: regular;
-    font-size: 12px;
-    line-height: 30px;
-  }
-  #app {
-  }
-
-  .navigation {
+  .headerApp__navigation {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 32px 32px 40px;
   }
 
-  .navigation__links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 309px;
-    letter-spacing: 2px;
+  .headerApp__hamburguer {
+    display: block;
   }
 
-  a {
-    text-decoration: none;
-    color: inherit;
+  .headerApp__navLinks {
+    display: none;
+    font-family: "Public Sans", sans-serif;
+    font-weight: regular;
+    font-size: 12px;
+    line-height: 30px;
   }
 
-  .navigation a:visited {
+  .headerApp__navLink:visited {
     color: var(--darkBlue);
   }
 
-  .navigation a.router-link-exact-active,
-  a.router-link-exact-active {
-    color: var(--slightlyDesaturatedCyan);
-  }
-
-  .main {
+  .mainApp__content {
     padding: 0 32px;
   }
-  .contact {
+  .footerApp {
     margin-top: 80px;
     padding: 56px 136px;
     text-align: center;
     background-color: var(--grayishDarkBlue);
   }
 
-  .contact__logo {
+  .footerApp__logo {
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -251,40 +247,61 @@
     height: 32px;
   }
 
-  .contact__navLinks {
+  .footerApp__navLinks {
     padding: 40px 0;
+    font-family: "Public Sans", sans-serif;
+    font-weight: regular;
+    font-size: 12px;
+    line-height: 30px;
   }
 
-  .contact__navLink {
+  .footerApp__navLink {
     letter-spacing: 2px;
     display: block;
     text-decoration: none;
     color: white;
   }
 
-  .contact__navLink .contact__navLink:not(:last-child) {
+  .footerApp__navLink .footerApp__navLink:not(:last-child) {
     padding-bottom: 32px;
   }
 
-  .contact__mediaLink:not(:last-child) {
+  .footerApp__image {
+    width: unset;
+    height: unset;
+    cursor: pointer;
+  }
+
+  .footerApp__mediaLink:not(:last-child) {
     padding-right: 15px;
   }
 
   /* TABLET SETTINGS */
 
   @media (min-width: 768px) {
-    .navigation {
+    .headerApp__navigation {
       padding-top: 64px;
       padding-right: 40px;
       padding-left: 40px;
     }
 
-    .main {
+    .headerApp__hamburguer {
+      display: none;
+    }
+
+    .headerApp__navLinks {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 306px;
+      letter-spacing: 2px;
+    }
+    .mainApp__content {
       padding-right: 40px;
       padding-left: 40px;
     }
 
-    .contact {
+    .footerApp {
       margin-top: 120px;
       display: flex;
       padding: 0 39px;
@@ -292,38 +309,38 @@
       align-items: center;
     }
 
-    .contact__logo {
+    .footerApp__logo {
       margin-right: 40px;
     }
 
-    .contact__navLinks {
+    .footerApp__navLinks {
       display: flex;
       align-items: center;
       padding: 0;
     }
 
-    .contact__navLink:not(:last-child) {
+    .footerApp__navLink:not(:last-child) {
       padding: 0 33px 0 0;
     }
 
-    .contact__navLink {
+    .footerApp__navLink {
       padding: 33px 0px;
     }
   }
 
   @media (min-width: 1440px) {
-    .navigation {
+    .headerApp__navigation {
       padding-right: 165px;
       padding-left: 165px;
       padding-bottom: 54px;
     }
 
-    .main {
+    .mainApp__content {
       padding-right: 165px;
       padding-left: 165px;
     }
 
-    .contact {
+    .footerApp {
       padding: 0 165px;
     }
   }

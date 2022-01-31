@@ -1,12 +1,10 @@
 <template>
-  <div class="home">
-    <section class="introduction">
-      <picture class="introduction__image">
+  <div>
+    <section class="greetings">
+      <picture class="greetings__image">
         <source
           media="(min-width: 1440px)"
-          srcset="
-            ../assets/images/homepage/desktop/image-homepage-hero.jpg 1440w
-          "
+          srcset="../assets/images/homepage/desktop/image-homepage-hero@2x.jpg"
         />
         <source
           media="(min-width: 768px)"
@@ -16,19 +14,24 @@
           media="(min-width: 375px)"
           srcset="../assets/images/homepage/mobile/image-homepage-hero.jpg"
         />
-        <img src="OtherImage.png" alt="IfItDoesntMatchAnyMedia" />
+        <img
+          src="../assets/images/homepage/desktop/image-homepage-hero@2x.jpg"
+          alt="Imagem de um computador mostrando um relatorio de dados"
+        />
       </picture>
 
-      <div class="introduction__content">
-        <h2>Hey, I’m Alexandre Akira and I love building beautiful websites</h2>
+      <div class="greetings__content">
+        <h2 class="greetings__title">
+          Hey, I’m Alexandre Akira and I love building beautiful websites
+        </h2>
         <PrimaryButton
-          class="introduction__button"
+          class="greetings__button"
           text="ABOUT ME"
         ></PrimaryButton>
       </div>
     </section>
-    <div class="card">
-      <header class="card__header">
+    <article class="aboutMe">
+      <header class="aboutMe__header">
         <picture>
           <source
             media="(min-width: 1440px)"
@@ -44,14 +47,17 @@
             media="(min-width: 375px)"
             srcset="../assets/images/homepage/mobile/image-homepage-profile.jpg"
           />
-          <img src="OtherImage.png" alt="IfItDoesntMatchAnyMedia" />
+          <img
+            src="../assets/images/homepage/desktop/image-homepage-profile.jpg"
+            alt="Uma foto do desenvolvedor Alexandre Akira Enjiu"
+          />
         </picture>
       </header>
 
-      <main class="card__main">
+      <div class="aboutMe__content">
         <div class="divider"></div>
-        <h2>About Me</h2>
-        <p class="card__description body1">
+        <h2 class="aboutMe__title">About Me</h2>
+        <p class="aboutMe__description">
           I’m a junior front-end developer looking for a new role in an exciting
           company. I focus on writing accessible HTML, using modern CSS
           practices and writing clean JavaScript. When writing JavaScript code,
@@ -61,21 +67,21 @@
           outdoors. I love being out in nature whether that’s going for a walk,
           run or cycling. I’d love you to check out my work.
         </p>
-        <div class="card__footer">
+        <div class="aboutMe__button">
           <SecondaryButton text="GO TO PORTFOLIO"></SecondaryButton>
         </div>
         <div class="divider"></div>
-      </main>
-    </div>
+      </div>
+    </article>
 
-    <div class="home__footer">
-      <h2 class="footer__title">Interested in doing a project together?</h2>
+    <section class="contactMe">
+      <h2 class="contactMe__title">Interested in doing a project together?</h2>
       <div class="divider divider--tablet"></div>
       <SecondaryButton
-        class="card__link--center"
+        class="contactMe__button--center"
         text="CONTACT ME"
       ></SecondaryButton>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -94,44 +100,60 @@
 
 <style scoped>
   /* MOBILE SETTINGS */
-  h2 {
-    padding-top: 24px;
-    padding-bottom: 32px;
-    color: var(--grayishDarkBlue);
+
+  .greetings__title {
+    font-family: "Ibarra Real Nova", serif;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 42px;
+    letter-spacing: -0.36px;
   }
 
-  .card {
+  .aboutMe {
     margin-top: 86px;
   }
-  .card__image {
+  .aboutMe__image {
     margin-bottom: 40px;
   }
 
-  .card__title {
-    margin-top: 40px;
+  .aboutMe__title {
+    font-family: "Ibarra Real Nova", serif;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 42px;
+    letter-spacing: -0.36px;
   }
 
-  .card__description {
+  .aboutMe__description {
     color: var(--grayishDarkBlue);
     padding-bottom: 24px;
+    font-family: "Public Sans", sans-serif;
+    font-weight: regular;
+    font-size: 16px;
+    line-height: 30px;
   }
 
-  .card__footer {
+  .aboutMe__button {
     margin-bottom: 51px;
   }
 
-  .card__link--center {
+  .contactMe__button--center {
     margin-right: auto;
     margin-left: auto;
   }
 
-  .home__footer {
+  .contactMe {
     margin-top: 115px;
     text-align: center;
   }
 
-  .footer__title {
+  .contactMe__title {
     margin-bottom: 40px;
+    font-family: "Ibarra Real Nova", serif;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 42px;
+    letter-spacing: -0.36px;
   }
 
   .divider {
@@ -148,29 +170,29 @@
   /* TABLET SETTINGS */
 
   @media (min-width: 768px) {
-    .introduction {
+    .greetings {
       position: relative;
     }
 
-    .introduction__content {
+    .greetings__content {
       position: absolute;
       bottom: 0;
       width: 514px;
       background-color: #fff;
     }
 
-    .introduction__content h2 {
+    .greetings__content h2 {
       padding-bottom: 42px;
       padding-top: 56px;
       padding-right: 56px;
     }
 
-    .card {
-      display: flex;
-      justify-content: space-between;
+    .aboutMe {
+      display: grid;
+      grid-template-columns: 0.5fr 1fr;
     }
 
-    .card__main {
+    .aboutMe__content {
       display: flex;
       min-height: 100%;
       flex-direction: column;
@@ -178,26 +200,26 @@
       padding-left: 69px;
     }
 
-    .card__main h2 {
+    .aboutMe__content h2 {
       padding: 0;
     }
 
-    .card__description {
+    .aboutMe__description {
       padding: 0;
     }
 
-    .card__footer {
+    .aboutMe__button {
       margin-bottom: 0;
     }
 
-    .home__footer {
+    .contactMe {
       display: grid;
       grid-template-columns: 3.5fr 1fr 1fr;
       align-items: center;
       gap: 32px;
     }
 
-    .footer__title {
+    .contactMe__title {
       margin: 0;
       padding: 0;
     }
@@ -209,25 +231,18 @@
   /* DESKTOP SETTINGS */
 
   @media (min-width: 1440px) {
-    .introduction__content h2 {
-      font-family: "Ibarra Real Nova", serif;
-      font-weight: bold;
-      font-size: 50px;
-      line-height: 50px;
-      letter-spacing: -0.45px;
-    }
-
-    .card {
+    .aboutMe {
       margin-top: 150px;
+      grid-template-columns: 1fr 1fr;
     }
-    .card__main {
+    .aboutMe__content {
       padding-left: 125px;
       padding-right: 95px;
     }
 
-    .home__footer {
+    .contactMe {
       display: grid;
-      grid-template-columns: 1fr 1.5fr 1fr;
+      grid-template-columns: 1fr 1.5fr 0fr;
       align-items: center;
       gap: 32px;
       margin-top: 150px;
