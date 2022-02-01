@@ -64,7 +64,10 @@
           run or cycling. I’d love you to check out my work.
         </p>
         <div class="aboutMe__button">
-          <SecondaryButton text="GO TO PORTFOLIO"></SecondaryButton>
+          <SecondaryButton
+            route="/portfolio"
+            text="GO TO PORTFOLIO"
+          ></SecondaryButton>
         </div>
         <div class="divider"></div>
       </div>
@@ -74,6 +77,7 @@
       <h2 class="contactMe__title">Interested in doing a project together?</h2>
       <div class="divider divider--tablet"></div>
       <SecondaryButton
+        route="/"
         class="contactMe__button--center"
         text="CONTACT ME"
       ></SecondaryButton>

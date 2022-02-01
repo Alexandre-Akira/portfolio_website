@@ -20,7 +20,10 @@
         {{ description }}
       </p>
       <div class="card__button">
-        <SecondaryButton :text="buttonText"></SecondaryButton>
+        <SecondaryButton
+          :route="buttonRoute"
+          :text="buttonText"
+        ></SecondaryButton>
       </div>
       <div class="divider"></div>
     </div>
@@ -51,9 +54,18 @@
         type: String,
         required: true,
       },
+      buttonRoute: {
+        type: String,
+        required: true,
+      },
       isLeftPosition: {
         type: Boolean,
         required: true,
+      },
+    },
+    methods: {
+      teste() {
+        alert("testei");
       },
     },
   };

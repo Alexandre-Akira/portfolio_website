@@ -1,21 +1,25 @@
 <template>
-  <div class="secondaryButton">
-    <rounter-link to="/">{{ text }}</rounter-link>
-  </div>
+  <router-link class="secondaryButton" :to="route">{{ text }}</router-link>
 </template>
 
 <script>
   export default {
     name: "SecondaryButton",
     props: {
-      text: String,
+      text: {
+        type: String,
+        required: true,
+      },
+      route: {
+        type: String,
+        required: true,
+      },
     },
   };
 </script>
 
 <style scoped>
   .secondaryButton {
-    cursor: pointer;
     border: 1px solid var(--grayishDarkBlue);
     text-align: center;
     padding: 17px;
