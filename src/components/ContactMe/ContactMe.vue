@@ -21,13 +21,9 @@
 
 <style scoped>
   .contactMe {
-    display: grid;
-    grid-template-columns: 3.5fr 1fr 1fr;
-    align-items: center;
-    gap: 32px;
-    margin-top: 96px;
+    margin-top: 115px;
+    text-align: center;
   }
-
   .contactMe__title {
     padding: 0;
     margin-bottom: 40px;
@@ -55,6 +51,14 @@
 
   /* Tablet */
   @media (min-width: 768px) {
+    .contactMe {
+      display: grid;
+      grid-template-columns: 3.5fr 1fr 1fr;
+      align-items: center;
+      gap: 32px;
+      margin-top: 96px;
+    }
+
     .divider--tablet {
       display: block;
     }
