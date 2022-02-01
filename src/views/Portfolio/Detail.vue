@@ -77,17 +77,29 @@
 <script>
   import SecondaryButton from "../../components/Buttons/SecondaryButton.vue";
   import ContactMe from "../../components/ContactMe/ContactMe.vue";
+  import API from "../../services/portfolioDetailService";
   export default {
     name: "Detail",
+    props: ["projectName"],
+    components: {
+      SecondaryButton,
+      ContactMe,
+    },
 
+    created() {
+      API.getProject(this.projectName)
+        .then((response) => {
+          this.project = response.data;
+          console.log(this.project);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     data() {
       return {
         project: null,
       };
-    },
-    components: {
-      SecondaryButton,
-      ContactMe,
     },
   };
 </script>

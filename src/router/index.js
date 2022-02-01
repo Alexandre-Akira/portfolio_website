@@ -18,9 +18,10 @@ const routes = [
     },
   },
   {
-    path: "/portfolio/detail",
+    path: "/portfolio/:projectName",
     name: "Detail",
     component: PortfolioDetail,
+    props: true,
   },
 ];
 

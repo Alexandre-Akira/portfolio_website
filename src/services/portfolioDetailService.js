@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiPortfolioDetail = axios.create({
+const apiClient = axios.create({
   baseURL:
     "https://my-json-server.typicode.com/Alexandre-Akira/akira-JSON-server",
   withCredentials: false,
@@ -11,9 +11,10 @@ const apiPortfolioDetail = axios.create({
 });
 
 export default {
-  getEvents(perPage, page) {
-    return apiPortfolioDetail.get(
-      "/events?_limit=" + perPage + "&_page=" + page
-    );
+  getProjects() {
+    return apiClient.get("/projects");
+  },
+  getProject(projectName) {
+    return apiClient.get("/projects/" + projectName);
   },
 };
