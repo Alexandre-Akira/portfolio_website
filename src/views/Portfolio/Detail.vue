@@ -26,7 +26,7 @@
 
         <SecondaryButton
           :route="'project.website'"
-          class="resume__button"
+          class="project__button"
           text="VISIT WEBSITE"
         ></SecondaryButton>
         <div class="divider"></div>
@@ -128,6 +128,8 @@
   };
 </script>
 <style scoped>
+  /* MOBILE */
+
   .project__pagination {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -210,47 +212,197 @@
     font-style: normal;
     color: var(--grayishDarkBlue);
   }
+
+  @media (min-width: 375px) {
+    .project__resume {
+      margin-top: 40px;
+    }
+    .project__title {
+      margin: 24px 0;
+    }
+    .project__description {
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+
+    .project__tecnologies {
+      font-size: 13px;
+    }
+
+    .project__tecnologies:nth-child(5) {
+      margin-bottom: 24px;
+    }
+    .project__button {
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .project__detail {
+      margin-top: 48px;
+    }
+
+    .project__subtitle:nth-child(1) {
+      margin-bottom: 24px;
+    }
+
+    .project__description:nth-child(2) {
+      margin-bottom: 40px;
+    }
+
+    .project__subtitle:nth-child(3) {
+      margin-bottom: 40px;
+    }
+
+    .project__preview:nth-child(4) {
+      margin-bottom: 24px;
+    }
+
+    .project__preview:nth-child(5) {
+      margin-bottom: 40px;
+    }
+
+    .contactMe {
+      margin-top: 64px;
+    }
+    .project__pagination--next,
+    .project__pagination--previous {
+      padding: 24px 0;
+    }
+
+    .project__pagination--previousIcon {
+      padding: 0 24px 0 0;
+    }
+
+    .project__pagination--nextIcon {
+      padding: 0 0 0 24px;
+    }
+  }
+
+  /* TABLET */
+  @media (min-width: 768px) {
+    .project {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .project__resume {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .project__title {
+      margin-bottom: 4px;
+    }
+
+    .project__title,
+    .project__tecnologies:nth-child(5),
+    .project__button {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      margin-top: 4px;
+    }
+    .project__resume .project__description {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 6;
+    }
+    .project__resume .divider:first-child {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      margin-bottom: 20px;
+    }
+    .project__resume .divider:not(:first-child) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 6;
+      grid-row-end: 7;
+      margin-top: 20px;
+    }
+
+    .project__subtitle {
+      margin-top: 40px;
+      margin-bottom: 28px;
+    }
+
+    .project__subtitle:nth-child(3) {
+      margin-bottom: 40px;
+    }
+
+    .project__preview:nth-child(4) {
+      margin-bottom: 40px;
+    }
+
+    .project__preview:nth-child(5),
+    .project__pagination {
+      margin-bottom: 80px;
+    }
+
+    .project__pagination--next,
+    .project__pagination--previous {
+      padding: 32px 0;
+    }
+
+    .project__pagination--previousIcon {
+      padding: 0 32px 0 0;
+    }
+
+    .project__pagination--nextIcon {
+      padding: 0 0 0 32px;
+    }
+
+    .contactMe {
+      margin-top: unset;
+      margin-bottom: 96px;
+    }
+  }
   /* DESKTOP */
-  .project {
-    margin-top: 115px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 125px;
-  }
+  @media (min-width: 1440px) {
+    .project {
+      margin-top: 115px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 125px;
+    }
 
-  .project__resume {
-    max-height: 498px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+    .project__resume {
+      max-height: 498px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-  .project__subtitle {
-    margin-bottom: 28px;
-  }
+    .project__subtitle {
+      margin-bottom: 28px;
+    }
 
-  .project__subtitle:not(:first-child) {
-    margin-top: 40px;
-  }
+    .project__subtitle:not(:first-child) {
+      margin-top: 40px;
+    }
 
-  .project__preview:nth-child(4) {
-    margin-bottom: 30px;
-  }
+    .project__preview:nth-child(4) {
+      margin-bottom: 30px;
+    }
 
-  .project__pagination {
-    margin-top: 64px;
-  }
+    .project__pagination {
+      margin-top: 64px;
+    }
 
-  .project__pagination--next,
-  .project__pagination--previous {
-    padding: 32px 0;
-  }
+    .project__pagination--next,
+    .project__pagination--previous {
+      padding: 32px 0;
+    }
 
-  .project__pagination--previousIcon {
-    padding: 0 32px 0 0;
-  }
+    .project__pagination--previousIcon {
+      padding: 0 32px 0 0;
+    }
 
-  .project__pagination--nextIcon {
-    padding: 0 0 0 32px;
+    .project__pagination--nextIcon {
+      padding: 0 0 0 32px;
+    }
   }
 </style>
