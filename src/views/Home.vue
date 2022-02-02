@@ -25,12 +25,13 @@
           Hey, I’m Alexandre Akira and I love building beautiful websites
         </h2>
         <PrimaryButton
+          route="#aboutMe--anchor"
           class="greetings__button"
           text="ABOUT ME"
         ></PrimaryButton>
       </div>
     </section>
-    <article class="aboutMe">
+    <article id="aboutMe--anchor" class="aboutMe">
       <picture class="aboutMe__image">
         <source
           media="(min-width: 1440px)"

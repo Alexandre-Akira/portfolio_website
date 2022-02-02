@@ -2,27 +2,30 @@
   <article>
     <img
       class="image"
-      src="../../assets/images/detail/desktop/image-manage-preview-1@2x.jpg"
+      :src="
+        require('../../assets/images/detail/desktop/image-' +
+          this.projectName +
+          '-hero@2x.jpg')
+      "
       alt="imagem do projeto"
     />
 
     <div class="project">
       <section class="project__resume">
         <div class="divider"></div>
-        <h2 class="project__title">Manage</h2>
+        <h2 class="project__title">
+          {{ capitalizeFirstLetter(this.project.id) }}
+        </h2>
         <p class="project__description">
-          This project required me to build a fully responsive landing page to
-          the designs provided. I used HTML5, along with CSS Grid and JavaScript
-          for the areas that required interactivity, such as the testimonial
-          slider.
+          {{ this.project.description.resume }}
         </p>
         <p class="project__tecnologies">
-          Interaction Design / Front End Development
+          {{ this.project.area }}
         </p>
-        <p class="project__tecnologies">HTML / CSS / JS</p>
+        <p class="project__tecnologies">{{ this.project.tecnologies }}</p>
 
         <SecondaryButton
-          route="/"
+          :route="this.project.website"
           class="resume__button"
           text="VISIT WEBSITE"
         ></SecondaryButton>
@@ -32,41 +35,56 @@
       <section class="project__detail">
         <h2 class="project__subtitle">Project Background</h2>
         <p class="project__description">
-          This project was a front-end challenge from Frontend Mentor. It’s a
-          platform that enables you to practice building websites to a design
-          and project brief. Each challenge includes mobile and desktop designs
-          to show how the website should look at different screen sizes.
-          Creating these projects has helped me refine my workflow and solve
-          real-world coding problems. I’ve learned something new with each
-          project, helping me to improve and adapt my style.
+          {{ this.project.description.detail }}
         </p>
 
         <h2 class="project__subtitle">Static Previews</h2>
         <img
-          src="../../assets/images/detail/desktop/image-manage-preview-1@2x.jpg"
+          :src="
+            require('../../assets/images/detail/desktop/image-' +
+              this.projectName +
+              '-preview-1@2x.jpg')
+          "
           alt=""
           class="project__preview"
         />
         <img
-          src="../../assets/images/detail/desktop/image-manage-preview-1@2x.jpg"
+          :src="
+            require('../../assets/images/detail/desktop/image-' +
+              this.projectName +
+              '-preview-2@2x.jpg')
+          "
           alt=""
           class="project__preview"
         />
       </section>
     </div>
     <nav class="project__pagination">
-      <router-link class="project__pagination--previous" to="/" rel="prev"
+      <router-link
+        @click="apiCall"
+        class="project__pagination--previous"
+        :to="'/portfolio/' + this.project.pagination.prev.toLowerCase()"
+        rel="prev"
         ><div class="project__pagination--previousIcon">&lt;</div>
         <div>
-          <p class="project__paginationTitle">Fylo</p>
+          <p class="project__paginationTitle">
+            {{ this.project.pagination.prev }}
+          </p>
           <p class="project__paginationDescription">Previous Project</p>
         </div>
       </router-link>
 
-      <router-link class="project__pagination--next" to="/" rel="prev">
+      <router-link
+        @click="apiCall"
+        class="project__pagination--next"
+        :to="'/portfolio/' + this.project.pagination.next.toLowerCase()"
+        rel="prev"
+      >
         <div>
-          <p class="project__paginationTitle">Bookmark</p>
-          <p class="project__paginationDescription">Previous Project</p>
+          <p class="project__paginationTitle">
+            {{ this.project.pagination.next }}
+          </p>
+          <p class="project__paginationDescription">Next Project</p>
         </div>
         <div class="project__pagination--nextIcon">&gt;</div>
       </router-link>
@@ -78,28 +96,57 @@
   import SecondaryButton from "../../components/Buttons/SecondaryButton.vue";
   import ContactMe from "../../components/ContactMe/ContactMe.vue";
   import API from "../../services/portfolioDetailService";
+  import NProgress from "nprogress";
   export default {
     name: "Detail",
-    props: ["projectName"],
+    props: {
+      projectName: {
+        type: String,
+        required: true,
+      },
+    },
     components: {
       SecondaryButton,
       ContactMe,
     },
 
-    created() {
-      API.getProject(this.projectName)
-        .then((response) => {
-          this.project = response.data;
-          console.log(this.project);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    methods: {
+      capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      },
+      apiCall() {
+        NProgress.start();
+        API.getProject(this.projectName)
+          .then((response) => {
+            this.project = response.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .finally(() => {
+            NProgress.done();
+          });
+      },
     },
+
     data() {
       return {
         project: null,
       };
+    },
+
+    created() {
+      NProgress.start();
+      API.getProject(this.projectName)
+        .then((response) => {
+          this.project = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          NProgress.done();
+        });
     },
   };
 </script>

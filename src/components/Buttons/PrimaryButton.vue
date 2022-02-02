@@ -1,9 +1,9 @@
 <template>
-  <rounter-link
+  <a
     @mouseover="svgStrokeValue = '#fff'"
     @mouseleave="svgStrokeValue = '#5FB4A2'"
     class="primaryButton"
-    to="/"
+    href="#aboutMe--anchor"
     ><div class="primaryButton__icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14">
         <g fill="none" fill-rule="evenodd" :stroke="svgStrokeValue">
@@ -13,7 +13,7 @@
         </g>
       </svg>
     </div>
-    <p class="primaryButton__text">{{ text }}</p></rounter-link
+    <p class="primaryButton__text">{{ text }}</p></a
   >
 </template>
 
@@ -22,6 +22,7 @@
     name: "PrimaryButton",
     props: {
       text: String,
+      route: String,
     },
 
     data() {
