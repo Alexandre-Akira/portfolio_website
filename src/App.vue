@@ -22,7 +22,7 @@
   </header>
 
   <main class="mainApp">
-    <router-view class="mainApp__content" />
+    <router-view />
   </main>
 
   <footer class="footerApp">
@@ -70,6 +70,9 @@
   export default {
     name: "App",
 
+    created() {
+      this.$store.dispatch("getProjects");
+    },
     data() {
       return {
         links: [
@@ -226,7 +229,7 @@
     color: var(--darkBlue);
   }
 
-  .mainApp__content {
+  .mainApp {
     padding: 0 32px;
   }
   .footerApp {
@@ -297,7 +300,7 @@
       width: 306px;
       letter-spacing: 2px;
     }
-    .mainApp__content {
+    .mainApp {
       padding-right: 40px;
       padding-left: 40px;
     }
@@ -339,7 +342,7 @@
       padding-bottom: 54px;
     }
 
-    .mainApp__content {
+    .mainApp {
       padding-right: 165px;
       padding-left: 165px;
     }

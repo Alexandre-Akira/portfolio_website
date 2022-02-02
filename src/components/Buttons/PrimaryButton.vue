@@ -4,6 +4,7 @@
     @mouseleave="svgStrokeValue = '#5FB4A2'"
     class="primaryButton"
     href="#aboutMe--anchor"
+    v-smooth-scroll
     ><div class="primaryButton__icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14">
         <g fill="none" fill-rule="evenodd" :stroke="svgStrokeValue">

@@ -1,11 +1,22 @@
 <template>
   <article class="card">
     <picture class="card__image">
-      <source media="(min-width: 375px)" :srcset="image375px" />
-      <source media="(min-width: 768px)" :srcset="image768px" />
-      <source media="(min-width: 1440px)" :srcset="image1440px" />
+      <source
+        media="(min-width: 375px)"
+        :srcset="require('../../assets/images/portfolio/mobile/' + image375px)"
+      />
+      <source
+        media="(min-width: 768px)"
+        :srcset="require('../../assets/images/portfolio/tablet/' + image768px)"
+      />
+      <source
+        media="(min-width: 1440px)"
+        :srcset="
+          require('../../assets/images/portfolio/desktop/' + image1440px)
+        "
+      />
       <img
-        :src="imageDefault"
+        :src="require('../../assets/images/portfolio/desktop/' + imageDefault)"
         alt="Uma foto do desenvolvedor Alexandre Akira Enjiu"
       />
     </picture>
@@ -31,6 +42,7 @@
 </template>
 <script>
   import SecondaryButton from "../Buttons/SecondaryButton.vue";
+
   export default {
     name: "Card",
 
@@ -61,11 +73,6 @@
       isLeftPosition: {
         type: Boolean,
         required: true,
-      },
-    },
-    methods: {
-      teste() {
-        alert("testei");
       },
     },
   };

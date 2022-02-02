@@ -14,18 +14,18 @@
       <section class="project__resume">
         <div class="divider"></div>
         <h2 class="project__title">
-          {{ capitalizeFirstLetter(this.project.id) }}
+          {{ capitalizeFirstLetter(project.id) }}
         </h2>
         <p class="project__description">
-          {{ this.project.description.resume }}
+          {{ project.description.resume }}
         </p>
         <p class="project__tecnologies">
-          {{ this.project.area }}
+          {{ project.area }}
         </p>
-        <p class="project__tecnologies">{{ this.project.tecnologies }}</p>
+        <p class="project__tecnologies">{{ project.tecnologies }}</p>
 
         <SecondaryButton
-          :route="this.project.website"
+          :route="'project.website'"
           class="resume__button"
           text="VISIT WEBSITE"
         ></SecondaryButton>
@@ -35,7 +35,7 @@
       <section class="project__detail">
         <h2 class="project__subtitle">Project Background</h2>
         <p class="project__description">
-          {{ this.project.description.detail }}
+          {{ project.description.detail }}
         </p>
 
         <h2 class="project__subtitle">Static Previews</h2>
@@ -61,28 +61,26 @@
     </div>
     <nav class="project__pagination">
       <router-link
-        @click="apiCall"
         class="project__pagination--previous"
-        :to="'/portfolio/' + this.project.pagination.prev.toLowerCase()"
+        :to="'/portfolio/' + project.pagination.prev.toLowerCase()"
         rel="prev"
         ><div class="project__pagination--previousIcon">&lt;</div>
         <div>
           <p class="project__paginationTitle">
-            {{ this.project.pagination.prev }}
+            {{ project.pagination.prev }}
           </p>
           <p class="project__paginationDescription">Previous Project</p>
         </div>
       </router-link>
 
       <router-link
-        @click="apiCall"
         class="project__pagination--next"
-        :to="'/portfolio/' + this.project.pagination.next.toLowerCase()"
+        :to="'/portfolio/' + project.pagination.next.toLowerCase()"
         rel="prev"
       >
         <div>
           <p class="project__paginationTitle">
-            {{ this.project.pagination.next }}
+            {{ project.pagination.next }}
           </p>
           <p class="project__paginationDescription">Next Project</p>
         </div>
@@ -95,8 +93,7 @@
 <script>
   import SecondaryButton from "../../components/Buttons/SecondaryButton.vue";
   import ContactMe from "../../components/ContactMe/ContactMe.vue";
-  import API from "../../services/portfolioDetailService";
-  import NProgress from "nprogress";
+
   export default {
     name: "Detail",
     props: {
@@ -110,43 +107,23 @@
       ContactMe,
     },
 
+    computed: {
+      project() {
+        let position = null;
+        this.$store.state.projects.forEach((element, index) => {
+          element.id === this.projectName ? (position = index) : false;
+        });
+
+        console.log(this.$store.state.projects[position]);
+
+        return this.$store.state.projects[position];
+      },
+    },
+
     methods: {
       capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
       },
-      apiCall() {
-        NProgress.start();
-        API.getProject(this.projectName)
-          .then((response) => {
-            this.project = response.data;
-          })
-          .catch((error) => {
-            console.log(error);
-          })
-          .finally(() => {
-            NProgress.done();
-          });
-      },
-    },
-
-    data() {
-      return {
-        project: null,
-      };
-    },
-
-    created() {
-      NProgress.start();
-      API.getProject(this.projectName)
-        .then((response) => {
-          this.project = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .finally(() => {
-          NProgress.done();
-        });
     },
   };
 </script>
