@@ -213,7 +213,7 @@
     color: var(--grayishDarkBlue);
   }
 
-  @media (min-width: 375px) {
+  @media (min-width: 320px) {
     .project__resume {
       margin-top: 40px;
     }
