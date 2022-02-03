@@ -5,9 +5,21 @@
         ><img src="./assets/images/logo.svg" />
       </rounter-link>
 
-      <a class="headerApp__hamburguer"
+      <a class="headerApp__hamburguer" @click="toggleMenu"
         ><img src="./assets/images/icons/hamburger.svg"
       /></a>
+
+      <div
+        class="headerApp__hamburguer-menu headerApp__hamburguer-menu--closed"
+      >
+        <router-link
+          class="headerApp__hamburguer-link"
+          v-for="(link, index) in links"
+          :key="link + index"
+          :to="link.path"
+          >{{ link.description }}</router-link
+        >
+      </div>
 
       <div class="headerApp__navLinks">
         <router-link
@@ -78,6 +90,38 @@
           { name: "twitter", path: "" },
         ],
       };
+    },
+    methods: {
+      toggleMenu() {
+        let mobileMenu = document.querySelector(".headerApp__hamburguer-menu");
+        let html = document.querySelector("html");
+        let isMobileMenuOpen;
+        if (
+          mobileMenu.classList.contains(
+            "headerApp__hamburguer-menu--closed"
+          ) === true
+        ) {
+          mobileMenu.classList.remove("headerApp__hamburguer-menu--closed");
+          setTimeout(() => {
+            mobileMenu.style.height = "186px";
+
+            isMobileMenuOpen = true;
+            html.onclick = () => {
+              if (isMobileMenuOpen === true) {
+                mobileMenu.style.height = "0px";
+                setTimeout(() => {
+                  mobileMenu.classList.add(
+                    "headerApp__hamburguer-menu--closed"
+                  );
+                  isMobileMenuOpen = false;
+                }, 500);
+              } else {
+                return;
+              }
+            };
+          }, 200);
+        }
+      },
     },
   };
 </script>
@@ -212,6 +256,34 @@
 
   .headerApp__hamburguer {
     display: block;
+  }
+
+  .headerApp__hamburguer-menu {
+    position: absolute;
+    width: 223px;
+    height: 0px;
+    top: 88px;
+    right: 32px;
+    background: var(--darkBlue);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: "Public Sans", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    overflow: hidden;
+    transition: all 500ms;
+  }
+
+  .headerApp__hamburguer-menu--closed {
+    display: none;
   }
 
   .headerApp__navLinks {

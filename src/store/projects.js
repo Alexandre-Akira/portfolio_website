@@ -15,13 +15,17 @@ export default createStore({
   },
   actions: {
     getProjects({ commit }) {
+      NProgress.start();
       API.getProjects()
         .then((response) => {
           commit("SET_PROJECTS", response.data);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
+          alert(
+            "Sorry, we are having network issues! Please, try again later!"
+          );
         });
+      NProgress.done();
     },
   },
   modules: {},
