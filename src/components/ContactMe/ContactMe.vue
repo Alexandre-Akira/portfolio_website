@@ -3,7 +3,7 @@
     <h2 class="contactMe__title">Interested in doing a project together?</h2>
     <div class="divider divider--tablet"></div>
     <SecondaryButton
-      route="/"
+      route="/contact"
       class="contactMe__button--center"
       text="CONTACT ME"
     ></SecondaryButton>

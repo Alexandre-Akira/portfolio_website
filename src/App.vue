@@ -39,29 +39,18 @@
     </nav>
 
     <div class="footerApp__socialMedias">
-      <rounter-link to="" class="footerApp__mediaLink"
+      <a
+        v-for="(media, index) in socialMedias"
+        :key="media + index"
+        :href="media.path"
+        target="_blank"
+        class="footerApp__mediaLink"
         ><img
-          class="footerApp__image"
-          src="./assets/images/icons/github.svg"
-          alt="Icone do github"
+          class="footerApp__media-image"
+          :src="require('./assets/images/icons/' + media.name + '.svg')"
+          :alt="'Icone do' + media.name"
         />
-      </rounter-link>
-
-      <rounter-link to="" class="footerApp__mediaLink"
-        ><img
-          class="footerApp__image"
-          src="./assets/images/icons/linkedin.svg"
-          alt="Icone do linkedin"
-        />
-      </rounter-link>
-
-      <rounter-link to="" class="footerApp__mediaLink"
-        ><img
-          class="footerApp__image"
-          src="./assets/images/icons/twitter.svg"
-          alt="Icone do twitter"
-        />
-      </rounter-link>
+      </a>
     </div>
   </footer>
 </template>
@@ -79,6 +68,14 @@
           { path: "/", description: "HOME" },
           { path: "/portfolio", description: "PORTFOLIO" },
           { path: "/contact", description: "CONTACT ME" },
+        ],
+        socialMedias: [
+          { name: "github", path: "https://github.com/Alexandre-Akira" },
+          {
+            name: "linkedin",
+            path: "https://www.linkedin.com/in/alexandre-akira-enjiu-baa5411b3/",
+          },
+          { name: "twitter", path: "" },
         ],
       };
     },
@@ -269,7 +266,7 @@
     margin-top: 24px;
   }
 
-  .footerApp__image {
+  .footerApp__media-image {
     width: unset;
     height: unset;
     cursor: pointer;

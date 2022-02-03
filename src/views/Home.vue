@@ -74,19 +74,12 @@
       </div>
     </article>
 
-    <section class="contactMe">
-      <h2 class="contactMe__title">Interested in doing a project together?</h2>
-      <div class="divider divider--tablet"></div>
-      <SecondaryButton
-        route="/"
-        class="contactMe__button--center"
-        text="CONTACT ME"
-      ></SecondaryButton>
-    </section>
+    <ContactMe></ContactMe>
   </div>
 </template>
 
 <script>
+  import ContactMe from "../components/ContactMe/ContactMe.vue";
   import PrimaryButton from "../components/Buttons/PrimaryButton.vue";
   import SecondaryButton from "../components/Buttons/SecondaryButton.vue";
 
@@ -95,6 +88,7 @@
     components: {
       PrimaryButton,
       SecondaryButton,
+      ContactMe,
     },
   };
 </script>
@@ -139,24 +133,6 @@
 
   .aboutMe__image img {
     margin-bottom: 32px;
-  }
-  .contactMe__button--center {
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  .contactMe {
-    margin-top: 115px;
-    text-align: center;
-  }
-
-  .contactMe__title {
-    margin-bottom: 40px;
-    font-family: "Ibarra Real Nova", serif;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: 42px;
-    letter-spacing: -0.36px;
   }
 
   .divider {
@@ -219,18 +195,6 @@
       margin-bottom: 0;
     }
 
-    .contactMe {
-      display: grid;
-      grid-template-columns: 3.5fr 1fr 1fr;
-      align-items: center;
-      gap: 32px;
-      margin-top: 96px;
-    }
-
-    .contactMe__title {
-      margin: 0;
-      padding: 0;
-    }
     .divider--tablet {
       display: block;
     }
@@ -246,14 +210,6 @@
     .aboutMe__content {
       padding-left: 125px;
       padding-right: 95px;
-    }
-
-    .contactMe {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr 0fr;
-      align-items: center;
-      gap: 32px;
-      margin-top: 150px;
     }
 
     .contact {
