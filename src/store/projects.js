@@ -15,7 +15,6 @@ export default createStore({
   },
   actions: {
     getProjects({ commit }) {
-      NProgress.start();
       API.getProjects()
         .then((response) => {
           commit("SET_PROJECTS", response.data);
@@ -25,7 +24,6 @@ export default createStore({
             "Sorry, we are having network issues! Please, try again later!"
           );
         });
-      NProgress.done();
     },
   },
   modules: {},
