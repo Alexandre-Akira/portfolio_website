@@ -32,29 +32,26 @@
       <div class="divider"></div>
     </div>
 
-    <form id="contact__form--send" action="" class="contact__form">
+    <form
+      id="contact__form--send"
+      action=""
+      class="contact__form"
+      @submit.prevent="sendForm"
+    >
       <h2 class="contact__title">Contact Me</h2>
       <div
         class="contact__inputs"
         v-for="(contactInput, index) in contactInputs"
         :key="contactInput + index"
       >
-        <label
-          :for="'contact__input--' + contactInput.label.toLowerCase()"
-          class="contact__label"
-          >{{ contactInput.label }}</label
-        ><input
-          :placeholder="contactInput.placeholder"
-          type="text"
-          :id="'contact__input--' + contactInput.label.toLowerCase()"
-          class="contact__input"
-        />
+        <FormInput></FormInput>
       </div>
       <div class="contact__text-area">
         <label for="contact__input--message" class="contact__label"
           >Message</label
         >
         <textarea
+          required
           placeholder="How can i help?"
           name=""
           class="contact__input"
@@ -76,10 +73,19 @@
 
 <script>
   import FormButton from "../components/Buttons/FormButton.vue";
+  import FormInput from "../components/Inputs/FormInput.vue";
   export default {
     name: "Contact",
+    components: { FormButton, FormInput },
     data() {
       return {
+        formData: {
+          user: {
+            name: String,
+            email: String,
+            message: String,
+          },
+        },
         socialMedias: [
           { name: "github", path: "https://github.com/Alexandre-Akira" },
           {
@@ -89,15 +95,26 @@
           { name: "twitter", path: "" },
         ],
         contactInputs: [
-          { label: "Name", placeholder: "Jane Appleseed" },
+          {
+            label: "Name",
+            placeholder: "Jane Appleseed",
+            type: "text",
+            value: this.name,
+          },
           {
             label: "Email",
             placeholder: "email@example.com",
+            type: "email",
+            value: this.email,
           },
         ],
       };
     },
-    components: { FormButton },
+    methods: {
+      sendForm() {
+        console.log(this.formData);
+      },
+    },
   };
 </script>
 

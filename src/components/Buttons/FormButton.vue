@@ -1,13 +1,12 @@
 <template>
-  <button
+  <input
     :action="path"
     :method="requestMethod"
     :form="formID"
     type="submit"
     class="formButton"
-  >
-    {{ text }}
-  </button>
+    :value="text"
+  />
 </template>
 
 <script>
