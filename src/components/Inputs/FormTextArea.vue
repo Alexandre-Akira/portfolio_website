@@ -1,16 +1,19 @@
 <template>
-  <label for="uuid" v-if="label">{{ label }}</label>
-  <input
+  <label for="uuid" class="contact__label">{{ label }}</label>
+  <textarea
     v-bind="$attrs"
+    :placeholder="placeholder"
+    class="contact__input"
+    :class="error ? 'contact__input--error' : ''"
+    id="contact__input--message"
+    cols="30"
+    rows="10"
     :value="modelValue"
-    :placeholder="label"
     @input="$emit('update:modelValue', $event.target.value)"
-    class="'field'"
     :id="uuid"
     :aria-describedby="error ? `${uuid}-error` : null"
     :aria-invalid="error ? true : null"
-    :class="error ? 'contact__input--error' : ''"
-  />
+  ></textarea>
   <p
     v-if="error"
     class="errorMessage"
@@ -20,25 +23,32 @@
     {{ error }}
   </p>
 </template>
+
 <script>
   import UniqueID from "../../Features/UniqueID";
-
   export default {
+    name: "FormTextArea",
     props: {
       label: {
         type: String,
-        default: "",
         required: true,
+        default: "",
       },
       modelValue: {
         type: [String, Number],
-        default: "",
         required: true,
+        default: "",
       },
+      placeholder: {
+        type: String,
+        required: true,
+        default: "How can i help?",
+      },
+
       error: {
         type: String,
-        default: "",
         required: true,
+        default: "This field is required",
       },
     },
     setup() {
@@ -50,7 +60,7 @@
   };
 </script>
 <style scoped>
-  label {
+  .contact__label {
     font-family: "Public Sans", sans-serif;
     font-style: normal;
     font-weight: bold;
@@ -61,8 +71,7 @@
     opacity: 0.8;
     display: block;
   }
-
-  input {
+  .contact__input {
     box-sizing: border-box;
     margin: 8px 0 24px 0;
     background: rgb(51, 50, 61, 0.1);
@@ -73,13 +82,13 @@
     width: 100%;
   }
 
-  input::placeholder {
+  .contact__input::placeholder {
     color: #33323d;
     mix-blend-mode: normal;
     opacity: 0.4;
   }
 
-  input:focus {
+  .contact__input:focus {
     outline-color: var(--slightlyDesaturatedCyan);
   }
 

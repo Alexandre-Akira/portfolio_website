@@ -44,23 +44,20 @@
         v-for="(contactInput, index) in contactInputs"
         :key="contactInput + index"
       >
-        <FormInput></FormInput>
+        <FormInput
+          class="contact__input"
+          :label="contactInput.label"
+          v-model="form.data[contactInput.label.toLowerCase()]"
+          :error="form.errorText[contactInput.label.toLowerCase()]"
+        ></FormInput>
       </div>
       <div class="contact__text-area">
-        <label for="contact__input--message" class="contact__label"
-          >Message</label
-        >
-        <textarea
-          required
-          placeholder="How can i help?"
-          name=""
-          class="contact__input"
-          id="contact__input--message"
-          cols="30"
-          rows="10"
-        ></textarea>
+        <FormTextArea
+          label="Message"
+          v-model="form.data.message"
+          :error="form.errorText.message"
+        ></FormTextArea>
       </div>
-
       <FormButton
         class="contact__form-button"
         requestMethod="post"
@@ -74,18 +71,25 @@
 <script>
   import FormButton from "../components/Buttons/FormButton.vue";
   import FormInput from "../components/Inputs/FormInput.vue";
+  import FormTextArea from "../components/Inputs/FormTextArea.vue";
   export default {
     name: "Contact",
-    components: { FormButton, FormInput },
+    components: { FormButton, FormInput, FormTextArea },
     data() {
       return {
-        formData: {
-          user: {
-            name: String,
-            email: String,
-            message: String,
+        form: {
+          data: {
+            name: "",
+            email: "",
+            message: "",
+          },
+          errorText: {
+            name: "",
+            email: "",
+            message: "",
           },
         },
+
         socialMedias: [
           { name: "github", path: "https://github.com/Alexandre-Akira" },
           {
@@ -99,20 +103,32 @@
             label: "Name",
             placeholder: "Jane Appleseed",
             type: "text",
-            value: this.name,
+            value: "",
           },
           {
             label: "Email",
             placeholder: "email@example.com",
             type: "email",
-            value: this.email,
+            value: "",
           },
         ],
       };
     },
     methods: {
       sendForm() {
-        console.log(this.formData);
+        let blankField = false;
+        //Validar se os campos do form nao estao vazios
+        for (const property in this.form.data) {
+          if (this.form.data[property] === "") {
+            this.form.errorText[property] = "This field is required";
+            blankField = true;
+          } else {
+            this.form.errorText[property] = "";
+          }
+        }
+        if (blankField === false) {
+          console.log("Sending this form:", this.form.data);
+        }
       },
     },
   };
@@ -169,36 +185,8 @@
     margin-bottom: 24px;
   }
 
-  .contact__label {
-    font-family: "Public Sans", sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 30px;
-    color: #33323d;
-    mix-blend-mode: normal;
-    opacity: 0.8;
-    display: block;
-  }
-
   .contact__form {
     width: 100%;
-  }
-  .contact__input {
-    box-sizing: border-box;
-    margin: 8px 0 24px 0;
-    background: rgb(51, 50, 61, 0.1);
-    mix-blend-mode: normal;
-    border: none;
-    color: var(--darkBlue);
-    padding: 9px 16px;
-    width: 100%;
-  }
-
-  .contact__input::placeholder {
-    color: #33323d;
-    mix-blend-mode: normal;
-    opacity: 0.4;
   }
 
   /* DESKTOP */
