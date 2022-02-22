@@ -2,18 +2,9 @@
   <div>
     <section class="greetings">
       <picture class="greetings__image">
-        <source
-          media="(min-width: 1440px)"
-          srcset="../assets/images/homepage/desktop/image-homepage-hero@2x.jpg"
-        />
-        <source
-          media="(min-width: 768px)"
-          srcset="../assets/images/homepage/tablet/image-homepage-hero.jpg"
-        />
-        <source
-          media="(min-width: 375px)"
-          srcset="../assets/images/homepage/mobile/image-homepage-hero.jpg"
-        />
+        <source media="(min-width: 1440px)" srcset="../assets/images/homepage/desktop/image-homepage-hero@2x.jpg" />
+        <source media="(min-width: 768px)" srcset="../assets/images/homepage/tablet/image-homepage-hero.jpg" />
+        <source media="(min-width: 375px)" srcset="../assets/images/homepage/mobile/image-homepage-hero.jpg" />
         <img
           src="../assets/images/homepage/desktop/image-homepage-hero@2x.jpg"
           alt="Imagem de um computador mostrando um relatorio de dados"
@@ -21,30 +12,15 @@
       </picture>
 
       <div class="greetings__content">
-        <h2 class="greetings__title">
-          Hey, I’m Alexandre Akira and I love building beautiful websites
-        </h2>
-        <PrimaryButton
-          route="#aboutMe--anchor"
-          class="greetings__button"
-          text="ABOUT ME"
-        ></PrimaryButton>
+        <h2 class="greetings__title">Hey, I’m Alex Spencer and I love building beautiful websites</h2>
+        <PrimaryButton route="#aboutMe--anchor" class="greetings__button" text="ABOUT ME"></PrimaryButton>
       </div>
     </section>
     <article id="aboutMe--anchor" class="aboutMe">
       <picture class="aboutMe__image">
-        <source
-          media="(min-width: 1440px)"
-          srcset="../assets/images/homepage/desktop/image-homepage-profile.jpg"
-        />
-        <source
-          media="(min-width: 768px)"
-          srcset="../assets/images/homepage/tablet/image-homepage-profile.jpg"
-        />
-        <source
-          media="(min-width: 375px)"
-          srcset="../assets/images/homepage/mobile/image-homepage-profile.jpg"
-        />
+        <source media="(min-width: 1440px)" srcset="../assets/images/homepage/desktop/image-homepage-profile.jpg" />
+        <source media="(min-width: 768px)" srcset="../assets/images/homepage/tablet/image-homepage-profile.jpg" />
+        <source media="(min-width: 375px)" srcset="../assets/images/homepage/mobile/image-homepage-profile.jpg" />
         <img
           src="../assets/images/homepage/desktop/image-homepage-profile.jpg"
           alt="Uma foto do desenvolvedor Alexandre Akira Enjiu"
@@ -55,20 +31,14 @@
         <div class="divider"></div>
         <h2 class="aboutMe__title">About Me</h2>
         <p class="aboutMe__description">
-          I’m a junior front-end developer looking for a new role in an exciting
-          company. I focus on writing accessible HTML, using modern CSS
-          practices and writing clean JavaScript. When writing JavaScript code,
-          I mostly use Vue, but I can adapt to whatever tools are required. I’m
-          based in São Paulo, BR, but I’m happy working remotely and have
-          experience in remote teams. When I’m not coding, you’ll find me
-          outdoors. I love being out in nature whether that’s going for a walk,
-          run or cycling. I’d love you to check out my work.
+          I’m a junior front-end developer looking for a new role in an exciting company. I focus on writing accessible
+          HTML, using modern CSS practices and writing clean JavaScript. When writing JavaScript code, I mostly use Vue,
+          but I can adapt to whatever tools are required. I’m based in São Paulo, BR, but I’m happy working remotely and
+          have experience in remote teams. When I’m not coding, you’ll find me outdoors. I love being out in nature
+          whether that’s going for a walk, run or cycling. I’d love you to check out my work.
         </p>
         <div class="aboutMe__button">
-          <SecondaryButton
-            route="/portfolio"
-            text="GO TO PORTFOLIO"
-          ></SecondaryButton>
+          <SecondaryButton route="/portfolio" text="GO TO PORTFOLIO"></SecondaryButton>
         </div>
         <div class="divider"></div>
       </div>
